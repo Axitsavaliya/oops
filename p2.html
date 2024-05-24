@@ -1,0 +1,68 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<table border="2">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+    </tr>
+    <tbody id="table1">
+
+    </tbody>
+</table>
+
+<body>
+    <script>
+        class Table {
+            constructor(data) {
+                this.data = data;
+            }
+
+            table_genrate() {
+                let table;
+                this.data.map(item => {
+                    table += `<table1>
+                    <td>${item.name}</td>
+                    <td>${item.email}</td>
+                    <td>${item.phone}</td></tr>
+                    `
+                });
+                document.getElementById('table1').innerHTML=table;
+                
+            }
+        }
+
+        let data = [{
+                name: "zeel",
+                email: "zeel@gmail.com",
+                phone: "12345",
+            },
+            {
+                name: "axit",
+                email: "axit@gmail.com",
+                phone: "67890",
+            },
+            {
+                name: "deep",
+                email: "deep@gmail.com",
+                phone: "09876",
+            },
+            {
+                name: "kush",
+                email: "kush@gmail.com",
+                phone: "54321",
+            },
+        ];
+
+        let generate = new Table(data);
+        document.getElementById('record').innerHTML = generate.table_genrate();
+    </script>
+</body>
+
+</html>

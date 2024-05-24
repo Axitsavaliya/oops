@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Restaurant {
+    constructor() {
+        this.menu = []; 
+    }
+
+    addItem(name, price) {
+        const item = {
+            name: name,
+            price: price,
+            ratings: []
+        };
+        this.menu.push(item);
+        console.log(`Menu item added: ${name} at $${price}`);
+    }
+
+    removeItem(name) {
+        const initialLength = this.menu.length;
+        this.menu = this.menu.filter(item => item.name !== name);
+
+        if (this.menu.length === initialLength) {
+            console.log(`No menu item found with name "${name}" to remove.`);
+        } else {
+            console.log(`Menu item removed: ${name}`);
+        }
+    }
+    addRating(name, rating) {
+        const Item = this.menu.find(item => item.name === name);
+        if (Item) {
+            Item.ratings.push(rating);
+            console.log(`Added rating ${rating} to ${name}`);
+        } else {
+            console.log(`Menu item ${name} not found.`);
+        }
+    }
+
+}
+
+
+const myRestaurant = new Restaurant();
+
+myRestaurant.addItem("aloo puri", 50.00);
+myRestaurant.addItem("Burger", 60.00);
+
+myRestaurant.addRating("aloo puri", 4);
+myRestaurant.addRating("aloo puri", 5);
+myRestaurant.addRating(" Burger", 3);
+
+myRestaurant.removeItem("aloo puri");
+myRestaurant.addRating("aloo puri", 5);
+
+    </script>
+</body>
+</html>
